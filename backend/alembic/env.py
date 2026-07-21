@@ -18,9 +18,9 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 def get_url():
-    url = os.getenv("DATABASE_URL_SYNC", "")
+    url = os.getenv("DATABASE_URL", "")
     if not url:
-        url = os.getenv("DATABASE_URL", "postgresql+asyncpg://user:pass@localhost/dbname")
+        url = "postgresql+asyncpg://user:pass@localhost/dbname"
     return url
 
 def run_migrations_offline() -> None:

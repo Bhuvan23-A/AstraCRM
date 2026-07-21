@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     UPLOAD_DIR: str = '/app/uploads'
     MAX_UPLOAD_SIZE_MB: int = 10
 
+    # Auth additions
+    SUPER_ADMIN_EMAIL: str = 'admin@astracrm.com'
+    SUPER_ADMIN_PASSWORD: str = 'Admin@1234'
+    SUPER_ADMIN_NAME: str = 'Super Admin'
+
     class Config:
         env_file = ".env"
 

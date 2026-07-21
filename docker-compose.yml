@@ -38,6 +38,7 @@ services:
       REFRESH_TOKEN_EXPIRE_DAYS: ${REFRESH_TOKEN_EXPIRE_DAYS:-7}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:5173,http://localhost:80}
       APP_ENV: ${APP_ENV:-development}
+      PYTHONPATH: /app
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     volumes:

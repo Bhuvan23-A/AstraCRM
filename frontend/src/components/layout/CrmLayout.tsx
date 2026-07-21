@@ -1,69 +1,57 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useThemeStore } from '../../stores/themeStore';
-import { Sun, Moon, Users, Building, Target, BookOpen } from 'lucide-react';
-import styles from './CrmLayout.module.css';
+import { useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import Sidebar from './Sidebar'
+import TopBar from './TopBar'
+import styles from './CrmLayout.module.css'
 
-interface CrmLayoutProps {
-  children: React.ReactNode;
+const routeMeta: Record<string, { label: string; parent?: string }> = {
+  '/dashboard': { label: 'Dashboard' },
+  '/contacts': { label: 'Contacts', parent: 'CRM' },
+  '/accounts': { label: 'Accounts', parent: 'CRM' },
+  '/leads': { label: 'Leads', parent: 'CRM' },
+  '/pipeline': { label: 'Pipeline', parent: 'Sales' },
+  '/deals': { label: 'Deals', parent: 'Sales' },
+  '/products': { label: 'Products', parent: 'Sales' },
+  '/quotations': { label: 'Quotations', parent: 'Sales' },
+  '/orders': { label: 'Orders', parent: 'Sales' },
+  '/activities': { label: 'Activities', parent: 'Activities' },
+  '/tasks': { label: 'Tasks', parent: 'Activities' },
+  '/communications': { label: 'Communications', parent: 'Activities' },
+  '/notifications': { label: 'Notifications', parent: 'Activities' },
+  '/tickets': { label: 'Tickets', parent: 'Support' },
+  '/documents': { label: 'Documents', parent: 'Support' },
+  '/reports': { label: 'Reports', parent: 'Insights' },
+  '/marketing': { label: 'Marketing', parent: 'Insights' },
+  '/users': { label: 'Users', parent: 'System' },
+  '/settings': { label: 'Settings', parent: 'System' },
+  '/import-export': { label: 'Import / Export', parent: 'System' },
+  '/audit-log': { label: 'Audit Log', parent: 'System' },
 }
 
-export const CrmLayout: React.FC<CrmLayoutProps> = ({ children }) => {
-  const { theme, toggleTheme } = useThemeStore();
+export function CrmLayout() {
+  const [collapsed, setCollapsed] = useState(false)
+  const location = useLocation()
+
+  const basePath = '/' + location.pathname.split('/')[1]
+  const meta = routeMeta[basePath]
+  const breadcrumbs = meta
+    ? [...(meta.parent ? [{ label: meta.parent }] : []), { label: meta.label }]
+    : [{ label: 'Sanna CRM' }]
 
   return (
     <div className={styles.layout}>
-      {/* Temporary Navigation Header until Task 3 (Dashboard Shell) is merged */}
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <div className={styles.brand}>
-            <div className={styles.logo}>S</div>
-            <span className={styles.brandName}>Sanna CRM</span>
-            <span className={styles.badge}>Module 2 Preview</span>
-          </div>
-          
-          <nav className={styles.nav}>
-            <NavLink 
-              to="/accounts" 
-              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
-            >
-              <Building size={16} />
-              <span>Accounts</span>
-            </NavLink>
-            <NavLink 
-              to="/contacts" 
-              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
-            >
-              <Users size={16} />
-              <span>Contacts</span>
-            </NavLink>
-            <NavLink 
-              to="/leads" 
-              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
-            >
-              <Target size={16} />
-              <span>Leads</span>
-            </NavLink>
-            <NavLink 
-              to="/components" 
-              className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
-            >
-              <BookOpen size={16} />
-              <span>Showcase</span>
-            </NavLink>
-          </nav>
-          
-          <button className={styles.themeToggle} onClick={toggleTheme} aria-label="Toggle Theme">
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-        </div>
-      </header>
-      
-      <main className={styles.main}>
-        <div className={styles.contentContainer}>
-          {children}
-        </div>
-      </main>
+      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((c) => !c)} />
+      <div className={styles.main}>
+        <TopBar
+          onSidebarToggle={() => setCollapsed((c) => !c)}
+          breadcrumbs={breadcrumbs}
+        />
+        <main className={styles.content}>
+          <Outlet />
+        </main>
+      </div>
     </div>
-  );
-};
+  )
+}
+
+export default CrmLayout;

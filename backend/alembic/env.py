@@ -15,13 +15,12 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+from app.core.config import settings
+
 target_metadata = Base.metadata
 
 def get_url():
-    url = os.getenv("DATABASE_URL_SYNC", "")
-    if not url:
-        url = os.getenv("DATABASE_URL", "postgresql+asyncpg://user:pass@localhost/dbname")
-    return url
+    return settings.DATABASE_URL
 
 def run_migrations_offline() -> None:
     url = get_url()

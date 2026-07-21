@@ -1,0 +1,101 @@
+.card {
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  transition: all var(--transition-base) ease-in-out;
+  overflow: hidden;
+}
+
+/* Variants */
+.default {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-sm);
+}
+
+.glass {
+  background-color: var(--glass-bg, rgba(255, 255, 255, 0.1));
+  backdrop-filter: var(--glass-blur, blur(16px));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.2));
+  box-shadow: var(--shadow-md);
+}
+
+.stat {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+}
+
+/* Padding */
+.pad-sm { padding: var(--space-3, 12px); }
+.pad-md { padding: var(--space-5, 20px); }
+.pad-lg { padding: var(--space-8, 32px); }
+
+/* Modifiers */
+.hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* StatCard specific */
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statTitle {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: var(--weight-medium);
+}
+
+.statIcon {
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.statBody {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2, 8px);
+}
+
+.statValue {
+  font-size: var(--text-2xl, 1.5rem);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.statFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  font-size: var(--text-xs);
+}
+
+.statChange {
+  display: inline-flex;
+  align-items: center;
+  font-weight: var(--weight-medium);
+}
+
+.positive { color: var(--color-success); }
+.negative { color: var(--color-danger); }
+.neutral { color: var(--text-secondary); }
+
+.statChangeLabel {
+  color: var(--text-tertiary);
+}

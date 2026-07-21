@@ -1,0 +1,52 @@
+.container {
+  position: relative;
+  display: inline-flex;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  user-select: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold, 600);
+}
+
+/* Sizes */
+.sm { width: 32px; height: 32px; font-size: 12px; }
+.md { width: 40px; height: 40px; font-size: 14px; }
+.lg { width: 48px; height: 48px; font-size: 16px; }
+.xl { width: 64px; height: 64px; font-size: 20px; }
+
+/* Status */
+.status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  border: 2px solid var(--bg-base);
+}
+
+.sm .status { width: 10px; height: 10px; right: -1px; bottom: -1px; }
+.md .status { width: 12px; height: 12px; right: -1px; bottom: -1px; }
+.lg .status { width: 14px; height: 14px; right: 0; bottom: 0; }
+.xl .status { width: 18px; height: 18px; right: 2px; bottom: 2px; }
+
+.online { background-color: var(--color-success); }
+.offline { background-color: var(--text-disabled); }
+.busy { background-color: var(--color-danger); }
+.away { background-color: var(--color-warning); }

@@ -1,0 +1,126 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+}
+
+.stickyHeader th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bg-surface);
+}
+
+.th {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-secondary);
+  font-weight: var(--weight-medium);
+  border-bottom: 1px solid var(--border-default);
+  user-select: none;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.sortable:hover {
+  color: var(--text-primary);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sortIcon {
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+.sortIconIdle {
+  opacity: 0.2;
+}
+
+.td {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tr {
+  transition: background-color var(--transition-fast);
+}
+
+.tr:hover {
+  background-color: var(--bg-surface-hover);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--color-primary-subtle);
+}
+
+.selected:hover {
+  background-color: var(--color-primary-light);
+}
+
+.checkboxCell {
+  padding: var(--space-3) var(--space-4);
+  width: 40px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.emptyState {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.skeletonRow td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.skeletonCell {
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface-hover) 25%,
+    var(--border-light) 50%,
+    var(--bg-surface-hover) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

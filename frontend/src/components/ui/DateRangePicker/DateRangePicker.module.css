@@ -1,0 +1,205 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  position: relative;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  transition: all var(--transition-base) ease;
+  cursor: pointer;
+}
+
+.inputWrapper:hover {
+  border-color: var(--color-primary);
+}
+
+.errorInput {
+  border-color: var(--color-danger);
+}
+
+.input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: var(--space-2) var(--space-10) var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.icon {
+  position: absolute;
+  right: var(--space-3);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.errorText {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+  margin: 0;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  display: flex;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  z-index: var(--z-dropdown, 1000);
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.calendarPane {
+  width: 250px;
+}
+
+.divider {
+  width: 1px;
+  background-color: var(--border-light);
+  margin: 0 var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  height: 24px;
+}
+
+.navPlaceholder {
+  width: 24px;
+  height: 24px;
+}
+
+.monthYear {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast) ease;
+}
+
+.navButton:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-1);
+}
+
+.weekDay {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-tertiary);
+  padding-bottom: var(--space-2);
+}
+
+.dayCell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+}
+
+.dayCell:hover:not(.endpoint) {
+  background-color: var(--bg-surface-hover);
+}
+
+.outsideMonth {
+  color: var(--text-tertiary);
+}
+
+.today {
+  position: relative;
+  font-weight: var(--weight-bold);
+}
+
+.today::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+.inRange {
+  background-color: var(--color-primary-subtle);
+  border-radius: 0;
+}
+
+.endpoint {
+  background-color: var(--color-primary) !important;
+  color: var(--text-on-primary) !important;
+  border-radius: var(--radius-sm);
+}
+
+.endpoint.today::after {
+  background-color: var(--text-on-primary);
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

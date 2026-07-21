@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  font-weight: var(--weight-medium, 500);
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) ease-in-out;
+}
+
+.wrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-subtle);
+}
+
+.hasError {
+  border-color: var(--color-danger);
+}
+
+.hasError:focus-within {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 2px var(--color-danger);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: var(--text-disabled);
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.wrapper:has(.textarea:disabled) {
+  background-color: var(--bg-base);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 20px;
+}
+
+.helperText {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  flex: 1;
+}
+
+.errorText {
+  color: var(--color-danger);
+}
+
+.counter {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  margin-left: var(--space-2, 8px);
+}

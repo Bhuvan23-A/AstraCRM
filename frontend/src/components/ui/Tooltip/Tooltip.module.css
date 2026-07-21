@@ -1,0 +1,75 @@
+.trigger {
+  display: inline-block;
+}
+
+.tooltip {
+  position: fixed;
+  background-color: var(--bg-elevated, #333);
+  color: var(--text-primary, #fff);
+  padding: var(--space-1, 4px) var(--space-2, 8px);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-tooltip, 600);
+  pointer-events: none;
+  white-space: nowrap;
+  animation: fadeIn var(--transition-fast) ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Positioning */
+.top {
+  transform: translate(-50%, -100%);
+}
+.top .arrow {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0 4px;
+  border-color: var(--bg-elevated, #333) transparent transparent transparent;
+}
+
+.bottom {
+  transform: translate(-50%, 0);
+}
+.bottom .arrow {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 4px 4px 4px;
+  border-color: transparent transparent var(--bg-elevated, #333) transparent;
+}
+
+.left {
+  transform: translate(-100%, -50%);
+}
+.left .arrow {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 4px 0 4px 4px;
+  border-color: transparent transparent transparent var(--bg-elevated, #333);
+}
+
+.right {
+  transform: translate(0, -50%);
+}
+.right .arrow {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 4px 4px 4px 0;
+  border-color: transparent var(--bg-elevated, #333) transparent transparent;
+}

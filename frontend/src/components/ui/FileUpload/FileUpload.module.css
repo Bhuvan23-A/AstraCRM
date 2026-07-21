@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface);
+  cursor: pointer;
+  transition: all var(--transition-base) ease;
+}
+
+.dropzone:hover:not(.errorZone) {
+  border-color: var(--color-primary);
+  background-color: var(--bg-surface-hover);
+}
+
+.dragOver {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-subtle);
+}
+
+.errorZone {
+  border-color: var(--color-danger);
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.instruction {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-1);
+}
+
+.browseText {
+  color: var(--color-primary);
+  font-weight: var(--weight-medium);
+}
+
+.helperText {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.errorText {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+  margin: 0;
+}
+
+.fileList {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+.fileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  overflow: hidden;
+}
+
+.fileName {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.removeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+}
+
+.removeBtn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--color-danger);
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

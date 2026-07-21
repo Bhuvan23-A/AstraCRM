@@ -1,0 +1,250 @@
+.backHeader {
+  margin-bottom: var(--space-4);
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  margin-top: var(--space-1);
+}
+
+.actionButtons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.infoCard {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.metaList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.metaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.metaIcon {
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+
+.metaLabel {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+}
+
+.metaValue {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  margin-top: var(--space-1);
+}
+
+.profileLink {
+  color: var(--color-accent-light);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.profileLink:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+.tagsSection {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.tag {
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: var(--weight-semibold);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.descriptionSection {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.descriptionText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-2);
+  white-space: pre-wrap;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subCardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+}
+
+.tableCard {
+  background-color: var(--bg-surface);
+}
+
+.contactName {
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+.contactName:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+.empty {
+  color: var(--text-tertiary);
+}
+
+.link {
+  color: var(--color-accent-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.mainCard {
+  background-color: var(--bg-surface);
+}
+
+.sectionHeader {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.inputLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 992px) {
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}

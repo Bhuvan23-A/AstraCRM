@@ -8,7 +8,6 @@ import {
   Modal, Card, Badge, SearchInput, Pagination, Breadcrumbs
 } from '../../components/ui';
 import { Building, Plus, Trash, ExternalLink } from 'lucide-react';
-import { CrmLayout } from '../../components/layout/CrmLayout';
 import styles from './Accounts.module.css';
 
 const INDUSTRY_OPTIONS = [
@@ -181,7 +180,7 @@ export const Accounts: React.FC = () => {
   ];
 
   return (
-    <CrmLayout>
+    <>
       <div className={styles.pageHeader}>
         <div>
           <Breadcrumbs items={[{ label: 'Home' }, { label: 'Accounts' }]} />
@@ -325,6 +324,6 @@ export const Accounts: React.FC = () => {
           </div>
         </form>
       </Modal>
-    </CrmLayout>
+    </>
   );
 };

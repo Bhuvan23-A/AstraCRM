@@ -113,8 +113,14 @@ def has_permission(role: Role, resource: Resource, permission: Permission) -> bo
 
 
 def require_permission(resource: Resource, permission: Permission) -> Callable:
-    def dependency():
-        pass
+    async def dependency(current_user=Depends(get_current_active_user)):
+        user_role = Role(current_user.role)
+        if not has_permission(user_role, resource, permission):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Access denied. Required permission: {resource.value}:{permission.value}",
+            )
+        return current_user
     return dependency
 
 

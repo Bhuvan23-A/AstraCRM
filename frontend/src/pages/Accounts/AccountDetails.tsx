@@ -8,7 +8,6 @@ import {
   Modal, Input, TextArea, Select 
 } from '../../components/ui';
 import { Building, Globe, Phone, Mail, UserPlus, ArrowLeft, Edit, Save, Trash } from 'lucide-react';
-import { CrmLayout } from '../../components/layout/CrmLayout';
 import styles from './AccountDetails.module.css';
 
 const INDUSTRY_OPTIONS = [
@@ -215,26 +214,22 @@ export const AccountDetails: React.FC = () => {
 
   if (loading) {
     return (
-      <CrmLayout>
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-          Loading account profile details...
-        </div>
-      </CrmLayout>
+      <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+        Loading account profile details...
+      </div>
     );
   }
 
   if (!account) {
     return (
-      <CrmLayout>
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-danger)' }}>
-          Account profile not found.
-        </div>
-      </CrmLayout>
+      <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-danger)' }}>
+        Account profile not found.
+      </div>
     );
   }
 
   return (
-    <CrmLayout>
+    <>
       <div className={styles.backHeader}>
         <Button variant="ghost" leftIcon={<ArrowLeft size={16} />} onClick={() => navigate('/accounts')}>
           Back to Directory
@@ -518,6 +513,6 @@ export const AccountDetails: React.FC = () => {
           </div>
         </form>
       </Modal>
-    </CrmLayout>
+    </>
   );
 };

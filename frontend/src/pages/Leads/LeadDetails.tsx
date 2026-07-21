@@ -11,7 +11,6 @@ import {
   Target, Globe, Phone, Mail, Sparkles, Flame,
   ArrowLeft, Edit, Save, Trash, Shuffle, CheckCircle, ExternalLink
 } from 'lucide-react';
-import { CrmLayout } from '../../components/layout/CrmLayout';
 import styles from './LeadDetails.module.css';
 
 const STATUS_OPTIONS = [
@@ -201,26 +200,22 @@ export const LeadDetails: React.FC = () => {
 
   if (loading) {
     return (
-      <CrmLayout>
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-          Loading lead record details...
-        </div>
-      </CrmLayout>
+      <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+        Loading lead record details...
+      </div>
     );
   }
 
   if (!lead) {
     return (
-      <CrmLayout>
-        <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-danger)' }}>
-          Lead record not found.
-        </div>
-      </CrmLayout>
+      <div style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-danger)' }}>
+        Lead record not found.
+      </div>
     );
   }
 
   return (
-    <CrmLayout>
+    <>
       <div className={styles.backHeader}>
         <Button variant="ghost" leftIcon={<ArrowLeft size={16} />} onClick={() => navigate('/leads')}>
           Back to Database
@@ -500,6 +495,6 @@ export const LeadDetails: React.FC = () => {
           </div>
         </form>
       </Modal>
-    </CrmLayout>
+    </>
   );
 };

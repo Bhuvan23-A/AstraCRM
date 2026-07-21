@@ -54,6 +54,6 @@ async def init_db():
                 )
                 db.add(admin)
                 await db.commit()
-                print(f"✅ Super admin seeded: {cfg.SUPER_ADMIN_EMAIL}")
+                print(f"[Database] Super admin seeded: {cfg.SUPER_ADMIN_EMAIL}")
         except Exception as e:
-            print(f"⚠️  Seed skipped (table may not exist yet): {e}")
+            print(f"[Database] Seed skipped (table may not exist yet): {e}")

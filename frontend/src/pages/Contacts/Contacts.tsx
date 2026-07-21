@@ -9,7 +9,6 @@ import {
   Badge, SearchInput, Pagination, Breadcrumbs, Select
 } from '../../components/ui';
 import { Users, Plus, Mail, Phone, Trash, Edit, Save } from 'lucide-react';
-import { CrmLayout } from '../../components/layout/CrmLayout';
 import styles from './Contacts.module.css';
 
 const STATUS_OPTIONS = [
@@ -274,7 +273,7 @@ export const Contacts: React.FC = () => {
   ];
 
   return (
-    <CrmLayout>
+    <>
       <div className={styles.pageHeader}>
         <div>
           <Breadcrumbs items={[{ label: 'Home' }, { label: 'Contacts' }]} />
@@ -443,6 +442,6 @@ export const Contacts: React.FC = () => {
           </div>
         </form>
       </Modal>
-    </CrmLayout>
+    </>
   );
 };

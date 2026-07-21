@@ -59,7 +59,7 @@ class AuthService:
         role: Optional[UserRole] = None,
         search: Optional[str] = None,
     ):
-        query = select(User)
+        query = select(User).where(User.deleted_at.is_(None))
         if role:
             role_value = role.value if isinstance(role, UserRole) else role
             query = query.where(User.role == role_value)
@@ -80,7 +80,7 @@ class AuthService:
 
     @staticmethod
     async def get_user_by_id(db: AsyncSession, user_id: UUID) -> Optional[User]:
-        result = await db.execute(select(User).where(User.id == user_id))
+        result = await db.execute(select(User).where(User.id == user_id, User.deleted_at.is_(None)))
         return result.scalar_one_or_none()
 
     @staticmethod
@@ -101,5 +101,5 @@ class AuthService:
 
     @staticmethod
     async def delete_user(db: AsyncSession, user: User):
-        await db.delete(user)
+        user.deleted_at = datetime.utcnow()
         await db.commit()

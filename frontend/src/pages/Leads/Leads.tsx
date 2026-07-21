@@ -9,7 +9,6 @@ import {
   Badge, SearchInput, Pagination, Breadcrumbs, Select, TextArea
 } from '../../components/ui';
 import { Target, Plus, Flame, Sparkles, TrendingUp, Trash } from 'lucide-react';
-import { CrmLayout } from '../../components/layout/CrmLayout';
 import styles from './Leads.module.css';
 
 const STATUS_OPTIONS = [
@@ -235,7 +234,7 @@ export const Leads: React.FC = () => {
   const convertedCount = leads?.filter(l => l.status === 'converted').length || 0;
 
   return (
-    <CrmLayout>
+    <>
       <div className={styles.pageHeader}>
         <div>
           <Breadcrumbs items={[{ label: 'Home' }, { label: 'Leads' }]} />
@@ -417,6 +416,6 @@ export const Leads: React.FC = () => {
           </div>
         </form>
       </Modal>
-    </CrmLayout>
+    </>
   );
 };

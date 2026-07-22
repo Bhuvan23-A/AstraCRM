@@ -55,5 +55,18 @@ async def init_db():
                 db.add(admin)
                 await db.commit()
                 print(f"[Database] Super admin seeded: {cfg.SUPER_ADMIN_EMAIL}")
+            
+            # Seed default products
+            from app.models.commerce import Product
+            res_p = await db.execute(select(sql_func.count()).select_from(Product))
+            if (res_p.scalar() or 0) == 0:
+                db.add_all([
+                    Product(name="Enterprise Software License", sku="ENT-SW-LIC", price=1500.00, description="Enterprise CRM core platform license"),
+                    Product(name="CRM Implementation Support (Hours)", sku="CRM-IMP-H", price=120.00, description="Dedicated support hours for deployment"),
+                    Product(name="Managed Cloud Hosting (Monthly)", sku="MNG-CLD-M", price=450.00, description="Monthly hosting fee"),
+                    Product(name="API Integration Bundle", sku="API-INT-BND", price=2500.00, description="Suite of API connectors"),
+                ])
+                await db.commit()
+                print("[Database] Default products seeded successfully")
         except Exception as e:
             print(f"[Database] Seed skipped (table may not exist yet): {e}")

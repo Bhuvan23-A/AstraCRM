@@ -14,6 +14,11 @@ const Contacts = lazy(() => import('./pages/Contacts/Contacts').then(m => ({ def
 const Leads = lazy(() => import('./pages/Leads/Leads').then(m => ({ default: m.Leads })))
 const LeadDetails = lazy(() => import('./pages/Leads/LeadDetails').then(m => ({ default: m.LeadDetails })))
 const Users = lazy(() => import('./pages/Users/Users'))
+const Quotations = lazy(() => import('./pages/Quotations/Quotations').then(m => ({ default: m.Quotations })))
+const QuotationForm = lazy(() => import('./pages/Quotations/QuotationForm').then(m => ({ default: m.QuotationForm })))
+const QuotationDetails = lazy(() => import('./pages/Quotations/QuotationDetails').then(m => ({ default: m.QuotationDetails })))
+const Orders = lazy(() => import('./pages/Orders/Orders').then(m => ({ default: m.Orders })))
+const OrderDetails = lazy(() => import('./pages/Orders/OrderDetails').then(m => ({ default: m.OrderDetails })))
 
 const Fallback = (
   <div style={{
@@ -76,8 +81,12 @@ export default function App() {
             <Route path="pipeline" element={<PlaceholderPage title="Sales Pipeline" />} />
             <Route path="deals" element={<PlaceholderPage title="Deal Management" />} />
             <Route path="products" element={<PlaceholderPage title="Product Catalog" />} />
-            <Route path="quotations" element={<PlaceholderPage title="Quotation Management" />} />
-            <Route path="orders" element={<PlaceholderPage title="Order Management" />} />
+            <Route path="quotations" element={<Quotations />} />
+            <Route path="quotations/new" element={<QuotationForm />} />
+            <Route path="quotations/:id" element={<QuotationDetails />} />
+            <Route path="quotations/:id/edit" element={<QuotationForm />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="orders/:id" element={<OrderDetails />} />
             <Route path="activities" element={<PlaceholderPage title="Activities" />} />
             <Route path="tasks" element={<PlaceholderPage title="Tasks" />} />
             <Route path="communications" element={<PlaceholderPage title="Communications" />} />

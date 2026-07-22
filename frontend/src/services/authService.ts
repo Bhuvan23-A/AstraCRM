@@ -19,8 +19,6 @@ export interface TokenResponse {
   user: AuthUser
 }
 
-// Auth endpoints — backend returns plain JSON not wrapped in APIResponse
-// so we call fetch directly for these
 const AUTH_BASE = (import.meta.env.VITE_API_BASE_URL || '') + '/api/v1'
 
 async function authFetch<T>(endpoint: string, body: unknown): Promise<T> {
@@ -29,15 +27,16 @@ async function authFetch<T>(endpoint: string, body: unknown): Promise<T> {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token && token !== 'undefined' ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify(body),
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: 'Request failed' }))
-    throw new Error(err.detail || 'Request failed')
+    throw new Error(err.detail || err.message || 'Request failed')
   }
-  return res.json()
+  const json = await res.json()
+  return json.data !== undefined ? json.data : json
 }
 
 async function authGet<T>(endpoint: string): Promise<T> {
@@ -45,14 +44,15 @@ async function authGet<T>(endpoint: string): Promise<T> {
   const res = await fetch(`${AUTH_BASE}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token && token !== 'undefined' ? { Authorization: `Bearer ${token}` } : {}),
     },
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: 'Request failed' }))
-    throw new Error(err.detail || 'Request failed')
+    throw new Error(err.detail || err.message || 'Request failed')
   }
-  return res.json()
+  const json = await res.json()
+  return json.data !== undefined ? json.data : json
 }
 
 async function authPut<T>(endpoint: string, body: unknown): Promise<T> {
@@ -61,15 +61,16 @@ async function authPut<T>(endpoint: string, body: unknown): Promise<T> {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token && token !== 'undefined' ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify(body),
   })
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: 'Request failed' }))
-    throw new Error(err.detail || 'Request failed')
+    throw new Error(err.detail || err.message || 'Request failed')
   }
-  return res.json()
+  const json = await res.json()
+  return json.data !== undefined ? json.data : json
 }
 
 async function authDelete(endpoint: string): Promise<void> {
@@ -77,12 +78,12 @@ async function authDelete(endpoint: string): Promise<void> {
   const res = await fetch(`${AUTH_BASE}${endpoint}`, {
     method: 'DELETE',
     headers: {
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token && token !== 'undefined' ? { Authorization: `Bearer ${token}` } : {}),
     },
   })
   if (!res.ok && res.status !== 204) {
     const err = await res.json().catch(() => ({ detail: 'Request failed' }))
-    throw new Error(err.detail || 'Request failed')
+    throw new Error(err.detail || err.message || 'Request failed')
   }
 }
 

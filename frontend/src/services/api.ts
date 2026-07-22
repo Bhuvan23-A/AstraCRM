@@ -1,14 +1,14 @@
 import { useToastStore } from '../stores/toastStore'
 import { APIResponse } from '../types/api'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api/v1'
 
 async function fetchWithInterceptor<T>(url: string, options: RequestInit): Promise<APIResponse<T>> {
   const token = localStorage.getItem('token')
   const headers = new Headers(options.headers)
   
   headers.set('Content-Type', 'application/json')
-  if (token) {
+  if (token && token !== 'undefined' && token !== 'null') {
     headers.set('Authorization', `Bearer ${token}`)
   }
 

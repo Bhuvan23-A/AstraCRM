@@ -34,6 +34,17 @@ async def startup_event():
     await init_db()
 
 
+@app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "app": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "docs_url": "/docs",
+        "health_url": "/health"
+    }
+
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "app": settings.APP_NAME, "version": settings.APP_VERSION}

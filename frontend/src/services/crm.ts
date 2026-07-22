@@ -21,11 +21,11 @@ export const crmService = {
   // TAGS SERVICE
   // ============================================
   getTags: async (): Promise<APIResponse<Tag[]>> => {
-    return apiGet<Tag[]>('/api/v1/tags');
+    return apiGet<Tag[]>('/tags');
   },
 
   createTag: async (name: string, color?: string): Promise<APIResponse<Tag>> => {
-    return apiPost<Tag>('/api/v1/tags', { name, color });
+    return apiPost<Tag>('/tags', { name, color });
   },
 
   // ============================================
@@ -40,23 +40,23 @@ export const crmService = {
     sort_order?: string;
   } = {}): Promise<APIResponse<Account[]>> => {
     const qs = buildQueryString(params);
-    return apiGet<Account[]>(`/api/v1/accounts${qs}`);
+    return apiGet<Account[]>(`/accounts${qs}`);
   },
 
   getAccount: async (id: string): Promise<APIResponse<Account>> => {
-    return apiGet<Account>(`/api/v1/accounts/${id}`);
+    return apiGet<Account>(`/accounts/${id}`);
   },
 
   createAccount: async (input: AccountCreateInput): Promise<APIResponse<Account>> => {
-    return apiPost<Account>('/api/v1/accounts', input);
+    return apiPost<Account>('/accounts', input);
   },
 
   updateAccount: async (id: string, input: AccountUpdateInput): Promise<APIResponse<Account>> => {
-    return apiPut<Account>(`/api/v1/accounts/${id}`, input);
+    return apiPut<Account>(`/accounts/${id}`, input);
   },
 
   deleteAccount: async (id: string): Promise<APIResponse<null>> => {
-    return apiDelete<null>(`/api/v1/accounts/${id}`);
+    return apiDelete<null>(`/accounts/${id}`);
   },
 
   // ============================================
@@ -72,28 +72,28 @@ export const crmService = {
     sort_order?: string;
   } = {}): Promise<APIResponse<Contact[]>> => {
     const qs = buildQueryString(params);
-    return apiGet<Contact[]>(`/api/v1/contacts${qs}`);
+    return apiGet<Contact[]>(`/contacts${qs}`);
   },
 
   getContact: async (id: string): Promise<APIResponse<Contact>> => {
-    return apiGet<Contact>(`/api/v1/contacts/${id}`);
+    return apiGet<Contact>(`/contacts/${id}`);
   },
 
   createContact: async (input: ContactCreateInput): Promise<APIResponse<Contact>> => {
-    return apiPost<Contact>('/api/v1/contacts', input);
+    return apiPost<Contact>('/contacts', input);
   },
 
   updateContact: async (id: string, input: ContactUpdateInput): Promise<APIResponse<Contact>> => {
-    return apiPut<Contact>(`/api/v1/contacts/${id}`, input);
+    return apiPut<Contact>(`/contacts/${id}`, input);
   },
 
   deleteContact: async (id: string): Promise<APIResponse<null>> => {
-    return apiDelete<null>(`/api/v1/contacts/${id}`);
+    return apiDelete<null>(`/contacts/${id}`);
   },
 
   checkContactDuplicates: async (email?: string, phone?: string, excludeId?: string): Promise<APIResponse<DuplicateWarning[]>> => {
     const qs = buildQueryString({ email, phone, exclude_id: excludeId });
-    return apiGet<DuplicateWarning[]>(`/api/v1/contacts/check-duplicates${qs}`);
+    return apiGet<DuplicateWarning[]>(`/contacts/check-duplicates${qs}`);
   },
 
   // ============================================
@@ -109,31 +109,31 @@ export const crmService = {
     sort_order?: string;
   } = {}): Promise<APIResponse<Lead[]>> => {
     const qs = buildQueryString(params);
-    return apiGet<Lead[]>(`/api/v1/leads${qs}`);
+    return apiGet<Lead[]>(`/leads${qs}`);
   },
 
   getLead: async (id: string): Promise<APIResponse<Lead>> => {
-    return apiGet<Lead>(`/api/v1/leads/${id}`);
+    return apiGet<Lead>(`/leads/${id}`);
   },
 
   createLead: async (input: LeadCreateInput): Promise<APIResponse<Lead>> => {
-    return apiPost<Lead>('/api/v1/leads', input);
+    return apiPost<Lead>('/leads', input);
   },
 
   updateLead: async (id: string, input: LeadUpdateInput): Promise<APIResponse<Lead>> => {
-    return apiPut<Lead>(`/api/v1/leads/${id}`, input);
+    return apiPut<Lead>(`/leads/${id}`, input);
   },
 
   deleteLead: async (id: string): Promise<APIResponse<null>> => {
-    return apiDelete<null>(`/api/v1/leads/${id}`);
+    return apiDelete<null>(`/leads/${id}`);
   },
 
   checkLeadDuplicates: async (email?: string, phone?: string, excludeId?: string): Promise<APIResponse<DuplicateWarning[]>> => {
     const qs = buildQueryString({ email, phone, exclude_id: excludeId });
-    return apiGet<DuplicateWarning[]>(`/api/v1/leads/check-duplicates${qs}`);
+    return apiGet<DuplicateWarning[]>(`/leads/check-duplicates${qs}`);
   },
 
   convertLead: async (id: string, input: LeadConvertInput): Promise<APIResponse<Lead>> => {
-    return apiPost<Lead>(`/api/v1/leads/${id}/convert`, input);
+    return apiPost<Lead>(`/leads/${id}/convert`, input);
   }
 };

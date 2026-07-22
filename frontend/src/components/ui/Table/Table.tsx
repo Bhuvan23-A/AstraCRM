@@ -49,7 +49,7 @@ export function Table<T extends { id: string | number }>({
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onSelectionChange) {
       if (e.target.checked) {
-        onSelectionChange(data.map(row => String(row.id)));
+        onSelectionChange(safeData.map(row => String(row.id)));
       } else {
         onSelectionChange([]);
       }
@@ -67,8 +67,9 @@ export function Table<T extends { id: string | number }>({
     }
   };
 
-  const allSelected = data.length > 0 && selectedRows.length === data.length;
-  const someSelected = selectedRows.length > 0 && selectedRows.length < data.length;
+  const safeData = data || [];
+  const allSelected = safeData.length > 0 && selectedRows.length === safeData.length;
+  const someSelected = selectedRows.length > 0 && selectedRows.length < safeData.length;
 
   return (
     <div className={styles.tableContainer}>
@@ -122,14 +123,14 @@ export function Table<T extends { id: string | number }>({
                 ))}
               </tr>
             ))
-          ) : data.length === 0 ? (
+          ) : safeData.length === 0 ? (
             <tr>
               <td colSpan={columns.length + (selectable ? 1 : 0)} className={styles.emptyState}>
                 {emptyMessage}
               </td>
             </tr>
           ) : (
-            data.map(row => (
+            safeData.map(row => (
               <tr
                 key={row.id}
                 className={`${styles.tr} ${onRowClick ? styles.clickable : ''} ${
